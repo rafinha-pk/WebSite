@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<meta charset='UTF-8'>
+<head>
+  <title>PK@dev: ~site $</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="css.css">
+  <script type="text/javascript">
+    $(document).ready(function()
+    {
+      // definindo idioma **depois
+      var pages = $(".pag");
+      var currentPage = 0;
+      var scrollEnabled = true;
+      var scrollTimeout;
+      
+      $(window).on("wheel", function(event) {
+        if (!scrollEnabled) {
+          return;
+        }
+        
+        scrollEnabled = false;
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+          scrollEnabled = true;
+        }, 800);
+        
+        if (event.originalEvent.deltaY > 0) {
+          nextPage();
+        } else {
+          prevPage();
+        }
+      });
+      
+      function nextPage() {
+        if (currentPage < pages.length - 1) {
+          currentPage++;
+          $("html, body").animate({
+            scrollTop: pages.eq(currentPage).offset().top
+          }, 800);
+        }
+      }
+      
+      function prevPage() {
+        if (currentPage > 0) {
+          currentPage--;
+          $("html, body").animate({
+            scrollTop: pages.eq(currentPage).offset().top
+          }, 800);
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+<div class="container pag" id="pag_img">
+  <div class="row">
+    <div class="col s2 m3 l4"></div>
+    <div class="col s8 m6 l4"><img class="circle responsive-img" src="img/tux.png"></div>
+    <div class="col s2 m3 l4"></div>
+  </div>
+  <div class="row">
+    <div class="col s2 m3 l4"></div>
+    <div class="col s8 m6 l4">Teste Teste Teste</div>
+    <div class="col s2 m3 l4"></div>
+  </div>
+</div>
+<div class="pag" id="pag_timaline">
+  <div class="row">
+    <div class="col s12 m12 l12"><center><h1>Time line</h1></center></div>
+  </div>
+  <div class="row" id="tl_anos">
+    <!--<div class="col s3 m3 l3 flow-text"><center></center></div>-->
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl1990" onclick="mudaAno(1990)"><center><b>1990</b></center></div>
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl1998" onclick="mudaAno(1998)"><center><b>1998</b></center></div>
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl2005" onclick="mudaAno(2005)"><center><b>2005</b></center></div>
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl2007" onclick="mudaAno(2007)"><center><b>2007</b></center></div>
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl2010" onclick="mudaAno(2010)"><center><b>2010</b></center></div>
+    <div class="col s2 m2 l2 flow-text tl_inativo" id="tl2014" onclick="mudaAno(2014)"><center><b>2014</b></center></div>
+    <!--<div class="col s3 m3 l3 flow-text"><center></center></div>-->
+  </div>
+  <div class="row" id="tl_info">
+    <div class="col s1 m2 l3"></div>
+    <div class="col s5 m4 l3" id="tl_img"><img class="responsive-img" src="img/1990.png"></div>
+    <div class="col s5 m4 l3" id="tl_text"><h3>1990</h3><br>text</div>
+    <div class="col s1 m2 l3"></div>
+  </div>
+</div>
+<div class="container pag" id="pag_tecnologias">
+  <div class="row">
+    <div class="col s12 m12 l12"><center><h1>Tecnologias</h1></center></div>
+  </div>
+  <div class="row">
+    <div class="col s2 m3 l4"></div>
+    <div class="col s8 m6 l4"></div>
+    <div class="col s2 m3 l4"></div>
+  </div>
+</div>
+<div class="pag" id="pag_contato">
+  <div class="row">
+    <div class="col s12 m12 l12"><center><h1>Contato</h1></center></div>
+  </div>
+  <div class="row">
+    <div class="col s2 m3 l4"></div>
+    <div class="col s8 m6 l4"></div>
+    <div class="col s2 m3 l4"></div>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+  function mudaAno(ano)
+      {
+        $(".flow-text").removeClass("tl_ativo");
+        $(".flow-text").addClass("tl_inativo");
+        $("#tl" + ano).removeClass("tl_inativo");
+        $("#tl" + ano).addClass("tl_ativo");
+        $("#tl_img img").attr("src", "img/" + ano + ".png");
+        $("#tl_text").html("<h3>" + ano + "</h3><br>text")
+      }
+</script>
+</html>

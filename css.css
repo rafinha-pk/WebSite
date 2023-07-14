@@ -1,0 +1,53 @@
+html 
+{
+  scroll-behavior: smooth;
+}
+body
+{
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("img/fundo.png");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #212121;
+  color: #66bb6a;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.pag
+{
+  min-height: 100vh;
+  max-height: 100vh;
+}
+#pag_contato
+{
+  background-color: #212121;
+}
+#tl_info
+{
+  margin: 5%;
+  border-style: dashed;
+  border-color: #66bb6a;
+}
+.tl_ativo
+{
+  background-color: #66bb6a;
+  color: #212121;  
+}
+.tl_inativo
+{
+  background-color: #212121;
+  color: #66bb6a;  
+}
+#tl_anos
+{
+  border-style: dotted;
+  border-color: #66bb6a;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
